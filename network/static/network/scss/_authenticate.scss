@@ -1,0 +1,244 @@
+
+@use 'network-theme';
+@use 'fonts';
+
+.authenticate-main-wrapper{
+    position:relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+
+    width: 40rem;
+    height: 100%;
+
+    background-color:network-theme.$lt-002;
+    border: 5px solid network-theme.$red-002;
+
+    border-radius: 1rem;
+
+    padding-bottom: 2rem;
+    margin-top: 1rem;
+    
+}
+
+.authenticate-entry-points{
+    position: relative;
+    display: block;
+    margin: auto;
+
+    width: 30rem;
+    height: 100%;
+
+    border: 2px solid darkolivegreen;
+   background-color: plum;
+}
+
+.authenticate-hero-wrapper{
+    position: relative;
+    display: block;
+    width: 10rem;
+    margin-top: 3rem;
+
+    //border: 2px solid rgb(34, 0, 0);
+    //background-color: purple;
+
+    img{
+        width: 100%;
+    }
+
+}
+
+.site-enerjon{
+    color: network-theme.$dk-003;
+    font-family: fonts.$hustle;
+    margin-bottom: 1rem;
+    .network-title{
+        font-size: 30pt;
+    }
+    .tagline{
+        font-family: fonts.$font-stack1;
+        font-size: 16pt;
+        text-align: center;
+
+        //border: 2px solid black;
+    }
+
+}
+
+.authenticate-login-wrapper{
+    position:relative;
+    display: block;
+
+    margin-top: 2rem;
+    padding: 1rem;
+    width: 20rem;
+
+    //background-color: rgb(0, 158, 53);
+    //border: 5px solid network-theme.$dk-001;
+    //border-bottom: 5px solid network-theme.$dk-001;
+
+}
+
+
+
+
+
+////////////////////////// Login Page ////////////////////////
+
+.login-page-wrapper{
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: right;
+    width: 25rem;
+    padding: 1rem;
+    //border: 5px solid black;
+    //background-color: rgb(0, 158, 53);
+}
+
+
+.login-title{
+    position: relative;
+    display: block;
+
+    color: network-theme.$dk-003;
+    font-size: 24pt;
+    font-family: fonts.$hustle;
+    text-align: left;
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+
+    //border: 2px solid network-theme.$dk-001;
+    //background-color: purple;
+
+}
+
+.login-message{
+    color: network-theme.$dk-001;
+    font-size: 14pt;
+    font-family: fonts.$font-stack1;
+
+}
+
+.login-btn{
+    position: relative;
+    display: block;
+    text-align: right;
+    margin-top: 2rem;
+
+    width:7rem;
+    height: 2.5rem;
+    margin-bottom: 1rem;
+    padding:0.5rem;
+
+    border-radius: 1rem;
+    border: 2px solid network-theme.$dk-001;
+
+    color: network-theme.$dk-004;
+    background-color: network-theme.$lt-001;
+
+
+    transition-property: background-color, color;
+    transition-duration: 350ms;
+    transition-timing-function: cubic-bezier();
+}
+.login-btn:hover,
+.login-btn:focus,
+.login-btn:target{
+    background-color: network-theme.$white-001;
+    color: network-theme.$red-002;
+}
+
+.authenticate-btn{
+    text-align: center;
+    margin: auto;
+    margin-bottom: 1rem;
+}
+
+.authenticate-redirect{
+    position: relative;
+    display:block;
+    text-align: center;
+    padding: 1rem;
+    color: network-theme.$dk-003;
+    font-size: 16pt;
+    font-family: fonts.$font-stack1;
+
+}
+
+
+
+
+
+
+.showcase-grid-wrapper{
+    position: absolute;
+    display: block;
+    width: 100%;
+
+    border: 2px solid red;
+    background-color: rgb(218, 160, 0)
+}
+
+
+.frontpage-grid{
+    display: grid;
+    gap: 0.125rem;
+    grid-template-columns: repeat(5, 1fr);
+  }
+  
+.showcase_card {
+    aspect-ratio: 1 / 1.5;
+    //border: 3px solid rgb(0, 101, 168); 
+}
+
+  /* Default grid is 1 grid item. ie the entire available space
+  Grid column from 1-2 ie from the leftmost to the rightmost
+  Grid Row from 1-2 ie from the top to the bottom
+  */
+.stacked {
+  display: grid;
+}
+
+/* This is simply explicitly defining the default size of the grid */
+/* when applied to items contained within the same grid cell they will overlap */
+.stacked > * {
+  grid-column: 1 / 2;
+  grid-row: 1 / 2;
+  //border: 2px solid cyan;
+}
+
+  
+  .showcase_card__content {
+    background: network-theme.$semi-opaque-003;
+    align-self: end;
+    margin: 0.5rem 0.5rem 2rem;
+    padding: 0.5rem;
+    box-shadow: 0 0.25rem 1rem rgb(0 0 0 / 0.1);
+  }
+  
+  .showcase_card__title {
+    font-size: 1.25rem;
+    line-height: 1.1;
+    color: network-theme.$white-001;
+  }
+  
+  .showcase_card__username {
+    font-size: 1.75rem;
+    color: network-theme.$white-001;
+  }
+
+  .showcase_card__description {
+    font-size: 0.75rem;
+    color: network-theme.$white-001;
+  }
+  
+  .showcase_card__img {
+    width: 100%;
+    aspect-ratio: 1 / 1.25;
+    object-fit: cover;
+  }
+  
+

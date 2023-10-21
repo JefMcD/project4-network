@@ -1,0 +1,24 @@
+
+{% extends "network/authenticate_layout.html" %}
+{% load static %}
+
+{% block title %}
+    network Authentication
+{% endblock %}
+
+{% block authenticate_panel %}
+
+
+
+        <div class = "authenticate-login-wrapper">
+            <a href="{% url 'network:login' %}"> 
+                <div class = "login-btn authenticate-btn" id = 'login-btn'>Login</div>
+            </a>
+        
+            <a href="{% url 'network:register' %}">
+                <div class = "login-btn authenticate-btn" id = 'register-btn'>Register</div>
+            </a>
+        </div>
+
+
+{% endblock %}

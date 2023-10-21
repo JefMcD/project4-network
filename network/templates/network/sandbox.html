@@ -1,0 +1,242 @@
+{% extends "network/sandbox_layout.html" %}
+{% load static %}
+
+
+{% block sandbox%}
+
+
+<div class='sandbox-window-wrapper'>
+    <div class = "sandbox-main-flexbox">
+        <div class = 'sandbox-header'>
+            Django Many To Many Relationships
+        </div>
+        <div class='sandbox-para'>
+            This discussion uses the following Django Relationships based on the social network project to illustrate how Many-2-Many relationships work and how to use them. 
+        </div>
+        <div class='sandbox-para'>
+             Django Docs: Many-2-Many
+             <a href=" https://docs.djangoproject.com/en/4.2/topics/db/examples/many_to_many/">
+                https://docs.djangoproject.com/en/4.2/topics/db/examples/many_to_many/
+            </a>
+        </div>
+
+
+
+        <div class = 'sandbox-img-wrapper sandbox-erd'>
+            <div class = 'sandbox-img-title sandbox-erd'>
+                logical model
+            </div>
+            <img src = "{% static 'network/images/sandbox/sandbox-erd.jpg' %}">
+        </div>
+
+
+
+
+        <div class = 'sandbox-img-wrapper sandbox-models'>
+            <div class = 'sandbox-img-title sandbox-models'>
+                models.py
+            </div>
+            <img src = "{% static 'network/images/sandbox/models.jpg' %}">
+        </div>
+
+
+
+
+
+
+
+
+        
+        <div class='sandbox-subheader'>
+            Regular Many 2 Many Relationship
+        </div>
+        <div class='sandbox-plain-para'>
+            The first scenario we will look at, is the simplest form a Django Many-2-Many relationship can take. In this case an entity has a straigntforward many to many 
+            relationship with another entity, where the intermediary table does not contain any data about the relation. <br><br>
+            
+            In the ERD above, the Mutes entity is an example of this. It describes a Many 2 Many relationship between User_Profile and User. 
+            A User can Mute many Profiles and a User_Profile can be muted by Many Users.
+        </div>
+        
+        <div class='sandbox-para'>
+            <div class='sandbox-para-header'>
+                Defining a regular Many 2 Many relationship in Django
+            </div>
+            <div class='sandbox-para no-border para-bold'>
+                mutes = models.ManyToManyField(User, related_name='user_profile_mutes_set')
+            </div>
+        </div>
+        <div class='sandbox-para'>
+            <div class='sandbox-para-header'>
+                Django Handles the Many-2-Many in the Background
+            </div>
+                In the ERD, there is a table connecting the User_Profile and the User tables. To create a many to many relationship in Django, you dont define another table, you create an attribute in one of the tables that will hold the m2m relationship. The Many2Many attribute can be addd to either table in the relationship but not both. Choose whichever one makes most sense. Django then creates an intermediary table in the background called a 'through' table and provides methods for adding and removing instances. The database structure is ultimately the same as it would be in am SQL database.
+                <div class='sandbox-para no-border'>
+                    class User_Profile(models.Model):<br>
+                    &emsp;avatar_pics = 'avatar_pics'<br>
+                    
+                    &emsp;user_profile_id     = models.AutoField(primary_key=True, db_index=True)<br>
+                    &emsp;user_id_fk          = models.ForeignKey(User, on_delete=models.CASCADE, related_name='user_profile')<br>
+                    <b>&emsp;mutes            = models.ManyToManyField(User, related_name='user_profile_mutes_set')</b><br>
+                    &emsp;moniker             = models.CharField(null=True,  blank=True, max_length=45)<br>
+                    &emsp;avatar              = models.ImageField(null=True, blank=True,  upload_to=avatar_pics)<br>
+                
+                </div>
+                This creates a table in the database called 'appname.mutes' which works in the background.<br>
+                The 'mutes' field will require data of type User. Its the entire instance, not a string or an int. An entire instance.
+                
+        </div>
+
+        <div class='sandbox-para'>
+            <div class='sandbox-para-header'>
+                Adding and removing entities to a Many-2-Many field
+            </div>
+                Before you can populate a many to many field, their parent entities must exist. SO the first step is to create them.
+                <div class='sandbox-para no-border para-bold'>
+                   billy = User_Profile(moniker="billy")<br>
+                   billy.save()<br>
+                   freddie = User_Profile(moniker="freddie")<br>
+                   freddie.save()<br>
+                </div>
+                Now that these User_profile instances exist, we can now add users to the Many-2-Many-field 'mutes'. Remember that its a relation between User and User_Profile, so we're adding an instance User to the mutes field of the User_Profile<br><br>
+                freddie = <b>User</b>.objects.get(username = 'freddie')<br>
+                billy = <b>User_Profile</b>.objects.get(moniker = 'billy')<br><br>
+                <div class="para-bold">Adding</div>
+                <div class='sandbox-para no-border para-bold'>
+                    billy.mutes.add(freddie)
+                </div>
+
+                <div class="para-bold">Removing</div>
+                <div class='sandbox-para no-border para-bold'>
+                    billy.mutes.remove(freddie)
+                </div>
+        </div>
+
+
+        <div class='sandbox-para'>
+            <div class='sandbox-para-header'>
+                Adding and removing entities, From other side Using <b>related_name</b> Lookup
+            </div>
+                When the Many2Many Field is defined it automatically creates a default related_name lookup. By default it will have the name<br> <b>'model-name'_set</b> or you can define it yourself. In the case of the User_Profile model the reverse lookup for the 'mutes'  field will be<br> related name ='user_profile_set'<br>
+                Its a good Idea to rename these to include the field they respresent so that they dont clash with other fields like foreign keys that will have the same default related name<br><br>
+                class User_Profile(models.Model):<br>
+                &emsp;mutes = models.ManyToManyField(User, <b>related_name='user_profile_mutes_set'</b>)<br><br>
+
+                This related_name is accessible from the 'other' side, ie from the User table to access the 'mutes' field of the User_Profile table.
+                You can add entities to a m2m field from either table the relationship connects. This is how to add an instance using the related name lookup field of the User table. <br><br>
+                brian = <b>User</b>.objects.get(username = 'brian')<br>
+                fred = <b>User</b>.objects.get(username = 'fred')<br><br>
+                <div class="para-bold">Adding</div>
+                <div class='sandbox-para no-border para-bold'>
+                    brian.user_profile_mutes_set.add(fred)<br>
+                </div>
+
+                <div class="para-bold">Removing</div>
+                <div class='sandbox-para no-border para-bold'>
+                    brian.user_profile_mutes_set.remove(fred)<br>
+                </div>
+                So when carrying out actions from the other side the related name replaces the field name
+        </div>
+
+
+
+        <div class='sandbox-subheader'>
+            Queries
+        </div>
+        <div class='sandbox-plain-para'>
+            These are the ways in which you can query the tables in the Many 2 Many Relationship. Queries can be made from either table. First we'll look at making queries from the Home table. ie an instance of User_Profile. The table containing the m2m field.
+        </div>
+        
+        <div class='sandbox-para'>
+            <div class='sandbox-para-header'>
+                Home Queries
+            </div>
+  
+            <b>Query All</b> <br>
+            Query All entries in the mutes table for User_Profile instance freddie<br><br>
+            freddie = User_Profile.objects.get(moniker = 'freddie')<br>
+            <div class='sandbox-para no-border para-bold'>
+                all_freddie_mutes = freddie.mutes.all()<br>
+            </div>
+            Here, freddie is an instance of User_Profile. SO we index into the mutes_m2m field and call the all() method to get all the users contained in the mutes m2m field<br><br>
+            A query like this can also be joined into a single statement
+            <div class='sandbox-para no-border para-bold'>
+                all_freddie_mutes = User_Profile.objects.get(moniker='freddie').mutes.all()<br>
+            </div>
+
+
+  
+            <b>Lookups Across Relationships</b> <br>
+            Indexing into the fields of the other table across the m2m relationship<br>
+            <br>
+            freddie = User.objects.get(username = 'freddie')<br>
+            <div class='sandbox-para no-border para-bold'>
+                all_freddie_mutes = freddie.user_profile_mutes_set.all()<br>
+            </div>
+            Here, freddie is an instance of User. In this case the many-2-many field is in the other table so we use the related name 'user_profile_mutes_set' to access it.
+        </div>
+
+        <div class='sandbox-para'>
+            <div class='sandbox-para-header'>
+                Double Underscore operator
+            </div>
+            The double underscore serves a multutute of purposes in Django queries. We'll try to break it down<br>
+            <b>Indexing Across Relationships</b> <br>
+            When you have a model which has a field which is either a Foreign Key or a Many 2 Many table, you can use the double underscore to access the attributes of the other table.<br><br>
+
+            <div class = 'sandbox-img-wrapper sandbox-erd'>
+                <div class = 'sandbox-img-title sandbox-erd'>
+                    logical model
+                </div>
+                <img src = "{% static 'network/images/sandbox/sandbox-erd.jpg' %}">
+            </div>
+
+            In a One to Many relationship the double underscore will access the fields of the related table<br>
+
+
+
+            <div class='sandbox-para no-border para-bold'>
+                all_freddie_mutes = freddie.mutes.all()<br>
+            </div>
+            Here, freddie is an instance of User_Profile. SO we index into the mutes_m2m field and call the all() method to get all the users contained in the mutes m2m field<br><br>
+
+
+  
+            <b>Lookups Across Relationships</b> <br>
+            Indexing into the fields of the other table across the m2m relationship<br>
+            <br>
+            freddie = User.objects.get(username = 'freddie')<br>
+            <div class='sandbox-para no-border para-bold'>
+                all_freddie_mutes = freddie.user_profile_mutes_set.all()<br>
+            </div>
+            Here, freddie is an instance of User. In this case the many-2-many field is in the other table so we use the related name 'user_profile_mutes_set' to access it.
+        </div>
+
+
+
+
+        <div class='sandbox-para no-border para-bold'>
+            <div>Username: {{my_username}}</div>
+            <div>Instance: <br>{{result}}<br></div>
+            <div>{{post}}</div>
+            <div>Who Made 'My Post' {{pepe_username}}</div>
+        </div>
+
+
+        <div class='sandbox-subheader'>
+            Unary Case
+        </div>
+
+        <div class='sandbox-subheader'>
+            Custom Case
+        </div>
+
+        <div class='sandbox-para'>
+            
+        </div>
+    </div>
+</div>
+
+
+{%endblock%}
+

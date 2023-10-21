@@ -1,0 +1,67 @@
+{% load static%}
+
+
+
+<div class = 'feedpost-wrapper newsfeed-pg{{page_num}}' data-post_id = {{post.user_post_id}}>
+    
+    <a href="{% url 'network:profile' post.user_id_fk.pk 'homeposts' %}">
+        <div class = 'feedpost-header'>
+            <div class = 'feedpost-avatar-wrapper'>
+                <img class = 'feedpost-avatar' src = "{{ post.user_id_fk.user_profile.first.avatar.url  }}">
+            </div>
+            <div class = 'feedpost-username'>{{post.user_id_fk.username}}</div>
+        </div>
+    </a>
+
+    <div class = 'feedpost-body'>
+        <div class = 'feedpost-title'>{{post.title}}</div>
+        <div class = 'feedpost-message'>{{post.message}}</div>
+        {% if post.image_file %}
+            <div class = 'feedpost-image-wrapper'>
+                <img class = 'feedpost-image' src ="{{post.image_file.url}}">
+            </div>
+        {% endif %}
+    </div>
+
+
+    <div class = 'feedpost-footer'>
+
+
+        {% if upduke_star_status == 'on' %}
+            <div class = "star-icon-wrapper">
+                <img class='star-icon  star-icon-active' src = "{% static 'network/images/post_icons/star_grey.svg' %}">
+            </div>
+        {% else %}
+            <div class = "star-icon-wrapper">
+                <img class='star-icon' src = "{% static 'network/images/post_icons/star_grey.svg' %}">
+            </div>
+        {% endif %}
+
+        <div class = 'upduke-count'>
+            {% if post.engagement_m2m_post_set.exists   %}
+                {{total_updukes}}
+            {% else %}
+                0
+            {% endif %}
+        </div>
+
+        {% if post_is_by_current_user %}
+            <div class = 'edit-post-wrapper'>
+                    <img class ="edit-post-icon" src = "{% static 'network/images/post_icons/edit-grey.svg'%}">
+            </div>
+
+            <div class = 'delete-post-wrapper'>
+                <img class ="delete-post-icon" src = "{% static 'network/images/post_icons/delete-grey.svg'%}">
+            </div>
+        {% endif %}
+
+
+
+
+        <div class = 'feedpost-date-wrapper'>
+            <div class = 'feedpost-date'>{{post.date}}</div>
+        </div>
+    </div>
+
+
+</div>

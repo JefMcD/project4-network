@@ -1,0 +1,45 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <link rel="shortcut icon" href="#">
+        <title>{% block title %}network Social Network{% endblock %}</title>
+         <link href="{% static 'network/css/style.css' %}" rel="stylesheet">
+
+    </head>
+    <body>
+        <div class='main-window-wrapper'>
+
+            {%if user.is_authenticated == False %}
+                <div class="showcase-grid-wrapper">
+                    {% include 'network/front-page/showcase.html' %}
+                </div>
+            {% endif %}
+
+            <div class = "network-main-flexbox">
+
+                <div class="left-nav-panel">
+                    {%block left_panel%}
+
+                    {%endblock%}
+                </div>
+                
+                <div class="center-main-panel">
+                    
+                    {% block center_panel %}
+                    {% endblock %}
+                </div>
+<!--
+                <div class="right-additional-panel">
+
+                    {% block additional %}
+                    {% endblock %}
+                </div>
+-->
+            </div>
+        </div>
+    </body>
+</html>
+
+{% block script %} {% endblock %}

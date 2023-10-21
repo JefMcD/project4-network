@@ -1,0 +1,67 @@
+
+$font-stack1: grotesk, Arial, sans-serif;
+$font-stack2: domine-bold, serif;
+$logo-font: grotesk, Arial, sans-serif;
+$scifi: massive,Arial, sans-serif;
+$headliner: headliner, sans-serif;
+$lazenby: lazenby, grotesk, Arial, sans-serif;
+$massive: massive, domine-bold, headliner, grotesk;
+$tantrum: tantrum, grotesk, Arial, sans-serif;
+$exclude_italic: exclude_italic, grotesk, Arial, sans-serif;
+$exclude: exclude_basic, grotesk, Arial, sans-serif;
+$spantaran: spantaran, grotesk, Arial, sans-serif;
+$hustle: hustle, grotesk, Arial, sans-serif;
+
+@font-face {
+    font-family: grotesk;
+    src: url('../fonts/woff/FamiljenGrotesk-Medium.woff2');
+}
+
+@font-face {
+    font-family: headliner;
+    src: url('../fonts/woff/headliner.woff2');
+}
+
+@font-face{
+    font-family: domine-bold;
+    src: url('../fonts/woff/Domine-Bold.woff2')
+}
+
+@font-face{
+    font-family: eras-std;
+    src: url('../fonts/woff/ERASDEMI.woff2');
+}
+
+
+@font-face{
+    font-family: lazenby;
+    src: url('../fonts/woff/LazenbyCompLiquid.woff2');
+}
+
+@font-face{
+    font-family:massive;
+    src: url('../fonts/woff/massive_retaliation.woff2')
+}
+
+@font-face{
+    font-family:tantrum;
+    src: url('../fonts/woff/tantrum.woff2')
+}
+
+@font-face{
+    font-family:exclude_italic;
+    src: url('../fonts/woff/exclude_italic.woff2')
+}
+@font-face{
+    font-family:exclude_basic;
+    src: url('../fonts/woff/exclude.woff2')
+}
+@font-face{
+    font-family:spantaran;
+    src: url('../fonts/woff/spantaran.woff2')
+}
+
+@font-face{
+    font-family:hustle;
+    src: url('../fonts/ttf/hongkonghustle3d.ttf')
+}

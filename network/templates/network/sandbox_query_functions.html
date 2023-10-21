@@ -1,0 +1,568 @@
+{% extends "network/sandbox_layout.html" %}
+{% load static %}
+
+
+{% block sandbox%}
+
+
+<div class='sandbox-window-wrapper'>
+    <div class = "sandbox-main-flexbox">
+        <div class = 'sandbox-header'>
+            Dijango Query Functions
+        </div>
+        <div class='sandbox-para'>
+            This is a short guide to the common functions that are available to Django queries 
+        </div>
+
+        <div class='sandbox-para'>
+            <div>
+                Django Docs: 
+            </div>
+            <div>
+                General Queries
+                <a href=" https://docs.djangoproject.com/en/dev/topics/db/queries/">
+                   https://docs.djangoproject.com/en/dev/topics/db/queries/
+               </a>
+            </div>
+
+            <div>
+                Using Q Queries
+                <a href=" https://docs.djangoproject.com/en/dev/topics/db/queries/#complex-lookups-with-q-objects">
+                    https://docs.djangoproject.com/en/dev/topics/db/queries/#complex-lookups-with-q-objects
+               </a>
+            </div>
+
+            <div>
+                Using F Expressions
+                <a href=" https://docs.djangoproject.com/en/4.2/ref/models/expressions/">
+                    https://docs.djangoproject.com/en/4.2/ref/models/expressions/
+               </a>
+            </div>
+
+            <div>
+                Queries API Reference
+                <a href=" https://docs.djangoproject.com/en/dev/ref/models/querysets/#queryset-api">
+                    https://docs.djangoproject.com/en/dev/ref/models/querysets/#queryset-api
+               </a>
+            </div>
+
+
+
+            
+        </div>
+
+
+        <div class='sandbox-para'>
+           The following database schema and relations between models is used in the examples
+        </div>
+
+        <div class='horz-flex'>
+            
+            <div class = 'sandbox-img-wrapper small-img'>
+                <div class = 'sandbox-img-title small-img'>
+                    logical model
+                </div>
+                <img src = "{% static 'network/images/sandbox/sandbox-erd.jpg' %}">
+            </div>
+
+            <div class = 'sandbox-img-wrapper small-img'>
+                <div class = 'sandbox-img-title small-img'>
+                    models.py
+                </div>
+                <img src = "{% static 'network/images/sandbox/models.jpg' %}">
+            </div>
+        </div>
+
+
+
+
+
+
+        
+        <div class='sandbox-subheader'>
+            Common Functions
+        </div>
+        <div class='sandbox-plain-para'>
+           This a few of the functions available when writing queries. They're generally analogous to statements that you can write in SQL
+        </div>
+        <div class='sandbox-plain-para'>
+           Its worth noting that nothing happens until the save() command is run. So you can write queries all day long without it ever being processed until you save it        
+        </div>
+        
+        <div class='sandbox-para'>
+            <div class='sandbox-para-header'>
+                all()<br><br>
+                <div class='sandbox-para'>
+                    Self explanatory
+                </div>
+       
+            </div>
+
+            <div class='sandbox-para'>
+                &emsp;SELECT *<br>
+                &emsp;FROM User_Post<br> 
+                <br>
+                <b>query = User_Post.objects.all()</b>
+            </div>
+   
+        </div>
+
+
+        <div class='sandbox-para'>
+            <div class='sandbox-para-header'>
+                create()<br><br>
+                <div class='sandbox-para'>
+                    Creates an instance
+                </div>
+       
+            </div>
+
+            <div class='sandbox-para'>
+                &emsp;INSERT INTO User_Post ('title', 'message')<br>
+                &emsp;VALUES ('My Post', 'Hello World');<br>
+                <br>
+                <b>query = User_Post.objects.create(title = 'My Post', message='Hello World')</b>
+            </div>
+            Or the following can be used. It will create the instance if it doesnt exist and update it if it does.
+            <div class='sandbox-para'>
+                <b>post = User_Post(title = 'My Post', message='Hello World')</b>
+            </div>
+   
+        </div>
+                
+
+
+
+        <div class='sandbox-para'>
+            <div class='sandbox-para-header'>
+                get()<br><br>
+                <div class='sandbox-para'>
+                    Returns a single instance of a Model. The attributes of the instance can then be directly accessed. If more than one instance is returned you get an error
+                </div>
+            </div>
+
+            <div class='sandbox-para'>
+                &emsp;SELECT *<br>
+                &emsp;FROM User_Post<br> 
+                &emsp;WHERE User_Post.user_post_id = 99<br>
+                <br>
+                <b>query = User_Post.objects.get(user_post_id = 99)</b>
+            </div>
+
+            <div class='sandbox-plain-para'>
+                Returns One User_post with a user_post_id of 99       
+             </div>
+   
+        </div>
+
+
+
+
+        <div class='sandbox-para'>
+            <div class='sandbox-para-header'>
+                filter()<br><br>
+                <div class='sandbox-para'>
+                    Returns a query-set from a Model. The query-set must be iterated through to access the instances inside.
+                </div>
+            </div>
+
+            <div class='sandbox-para'>
+                &emsp;SELECT *<br>
+                &emsp;FROM User_Post<br> 
+                &emsp;WHERE User_Post.user_post_id < 100<br>
+                <br>
+                <b>query = User_Post.objects.filter(user_post_id < 100)</b>
+            </div>
+            <div class='sandbox-plain-para'>
+                Returns all the User_posts with a user_post_id under 100       
+             </div>
+   
+        </div>
+
+
+
+
+        <div class='sandbox-para'>
+            <div class='sandbox-para-header'>
+                exists()<br><br>
+                <div class='sandbox-para'>
+                    Returns a Boolean. Returns True if the QuerySet is Not Null. Only worls with filter(), since get() returns instanbces and not querysets
+                </div>
+            </div>
+
+            <div class='sandbox-para'>
+                &emsp;SELECT *<br>
+                &emsp;FROM User_Post<br> 
+                &emsp;WHERE User_Post.user_post_id < 100<br>
+                <br>
+                <b>query = User_Post.objects.filter(user_post_id < 100)</b>
+            </div>
+            <div class='sandbox-plain-para'>
+                Returns all the User_posts with a user_post_id under 100       
+             </div>
+   
+        </div>
+
+
+
+
+
+
+        <div class='sandbox-para'>
+            <div class='sandbox-para-header'>
+                exclude()<br><br>
+                <div class='sandbox-para'>
+                    Excludes a dataset from the returned query. SQL somthin like
+                </div>
+            </div>
+
+            <div class='sandbox-para'>
+                &emsp;SELECT *<br>
+                &emsp;FROM User_Post<br> 
+                &emsp;WHERE User_Post.user_post_id < 100 AND<br>
+                &emsp;&emsp;&emsp;&emsp;date.month NOT IN "3"<br>
+                <br>
+                <b>query = User_Post.objects.all.exclude(date__month = '3')</b>
+            </div>
+            <div class='sandbox-plain-para'>
+                Returns all the User_posts except the ones for March<br> (Note double_underscore function for selecting the month. This is a method of the data field type)       
+             </div>
+   
+        </div>
+
+
+
+
+
+
+
+
+        <div class='sandbox-para'>
+            <div class='sandbox-para-header'>
+                LIMIT [:number]<br><br>
+                <div class='sandbox-para'>
+                    Limits the number of instances returned
+                </div>
+            </div>
+
+            <div class='sandbox-para'>
+                &emsp;SELECT *<br>
+                &emsp;FROM User_Post<br> 
+                &emsp;WHERE User_Post.user_post_id < 100<br>
+                &emsp;LIMIT 5;<br>
+                <br>
+                <b>query = User_Post.objects.filter(user_post_id < 100)[:5]</b><br>
+                <b>query = User_Post.objects.filter(user_post_id < 100)[6:10]</b>
+            </div>
+
+             <div class='sandbox-plain-para'>
+                <b>query = User_Post.objects.filter(user_post_id < 100)[:5]</b><br>
+                Returns first 5 instances with a user_post_id less than 100  <br>    
+             </div>
+
+             <div class='sandbox-plain-para'>
+                <b>query = User_Post.objects.filter(user_post_id < 100)[5:10]</b><br>
+                Returns instances 6 - 10 with a user_post_id less than 100 <br>    
+             </div>
+
+             <div class='sandbox-para'>
+                Limit can also be used to retreive an instance instead of a QuerySet<br>
+                <b>query = User_Post.objects.filter(user_post_id < 100)[0:1].get()</b><br>
+                Or<br>
+                <b>query = User_Post.objects.filter(user_post_id < 100)[0]</b>
+            </div>
+   
+        </div>
+
+
+
+        <div class='sandbox-para'>
+            <div class='sandbox-para-header'>
+                order_by()<br><br>
+                <div class='sandbox-para'>
+                    Order the queryset either Ascending(default) or Descending(-)
+                </div>
+            </div>
+
+            <div class='sandbox-para'>
+                &emsp;SELECT *<br>
+                &emsp;FROM User_Post<br> 
+                &emsp;WHERE User_Post.user_post_id < 100<br>
+                &emsp;ORDER BY Date DESC;<br>
+                <br>
+                <b>query = User_Post.objects.filter(user_post_id < 100).order_by("-date")</b>
+            </div>
+            <div class='sandbox-plain-para'>
+                Returns all the User_posts with a user_post_id under 100 and puts them in Descnding Order. Descending order is the most recent date first or the lowest number first.  
+             </div>
+   
+        </div>
+
+
+
+
+
+        <div class='sandbox-para'>
+            <div class='sandbox-para-header'>
+                Aggregates<br><br>
+                <div class='sandbox-para'>
+                    Max, Min, Count, Avg, Sum
+                </div>
+            </div>
+
+            <div class='sandbox-para'>
+                &emsp;SELECT *<br>
+                &emsp;FROM User_Post<br> 
+                &emsp;WHERE User_Post.user_post_id < 100<br>
+                &emsp;ORDER BY Date DESC;<br>
+                <br>
+                <b>query = User_Post.objects.filter(user_post_id < 100).order_by("-date")</b>
+            </div>
+            <div class='sandbox-plain-para'>
+                Returns all the User_posts with a user_post_id under 100 and puts them in Descnding Order. Descending order is the most recent date first or the lowest number first.  
+             </div>
+   
+        </div>
+
+
+
+
+
+
+
+
+        <div class='sandbox-para'>
+            <div class='sandbox-para-header'>
+                Date Query Methods<br><br>
+                <div class='sandbox-para'>
+                    Month, Year, Day, TimeZone, Quarter, Season
+                </div>
+            </div>
+
+            <div class='sandbox-para'>
+                &emsp;SELECT *<br>
+                &emsp;FROM User_Post<br> 
+                &emsp;WHERE User_Post.user_post_id < 100<br>
+                &emsp;ORDER BY Date DESC;<br>
+                <br>
+                <b>query = User_Post.objects.filter(user_post_id < 100).order_by("-date")</b>
+            </div>
+            <div class='sandbox-plain-para'>
+                Returns all the User_posts with a user_post_id under 100 and puts them in Descnding Order. Descending order is the most recent date first or the lowest number first.  
+             </div>
+   
+        </div>
+
+
+
+
+
+
+
+
+
+
+        <div class='sandbox-para'>
+            <div class='sandbox-para-header'>
+                IN<br><br>
+                <div class='sandbox-para'>
+                    Querying if an Instance is IN a subquery or List
+                </div>
+                <div class='sandbox-para'>
+                    Django Query Set API:<br>
+                    <a href="https://docs.djangoproject.com/en/dev/ref/models/querysets/#queryset-api">
+                        https://docs.djangoproject.com/en/dev/ref/models/querysets/#queryset-api
+                    </a><br><br>
+                    The QuerySet API provides about two dozen methods for carrying out fairly common programming tasks with queries. They are often a combination of Python and SQL and save you from doing it yourself. Here is a quick handful of usual suspects.
+                </div>
+            </div>
+
+            <div class='sandbox-para'>
+                &emsp;UDATE User_Post<br>
+                &emsp;SET user_id_fk = 100<br> 
+                &emsp;WHERE User_Post.user_post_id = 20<br>
+                <br>
+                <b>user = User.objects.get(pk = 100)</b><br>
+                <b>user_post = User_Post.objects.get(pk = 20)</b><br>
+                <b>user_post.user_id_fk = user</b>
+            </div>
+            <div class='sandbox-plain-para'>
+                Django also views the pk number as being synonymous with the instance, so this also works<br>
+                <b>user_post.user_id_fk = 100</b>
+             </div>
+   
+        </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        <div class='sandbox-para'>
+            <div class='sandbox-para-header'>
+                Other Common built-in Query Methods<br><br>
+                <div class='sandbox-para'>
+                    exists()
+                </div>
+                <div class='sandbox-para'>
+                    Django Query Set API:<br>
+                    <a href="https://docs.djangoproject.com/en/dev/ref/models/querysets/#queryset-api">
+                        https://docs.djangoproject.com/en/dev/ref/models/querysets/#queryset-api
+                    </a><br><br>
+                    The QuerySet API provides about two dozen methods for carrying out fairly common programming tasks with queries. They are often a combination of Python and SQL and save you from doing it yourself. Here is a quick handful of usual suspects.
+                </div>
+            </div>
+
+            <div class='sandbox-para'>
+                &emsp;UDATE User_Post<br>
+                &emsp;SET user_id_fk = 100<br> 
+                &emsp;WHERE User_Post.user_post_id = 20<br>
+                <br>
+                <b>user = User.objects.get(pk = 100)</b><br>
+                <b>user_post = User_Post.objects.get(pk = 20)</b><br>
+                <b>user_post.user_id_fk = user</b>
+            </div>
+            <div class='sandbox-plain-para'>
+                Django also views the pk number as being synonymous with the instance, so this also works<br>
+                <b>user_post.user_id_fk = 100</b>
+             </div>
+   
+        </div>
+
+
+       
+
+
+ 
+
+
+        <div class='sandbox-para'>
+            <div class='sandbox-para-header'>
+                Adding Foreign Key<br><br>
+                <div class='sandbox-para'>
+                    The Foreign Key attribute is an instance of the Table the Foreign Key relates to, which is different from the SQL which stored the PK of the instance.
+                </div>
+            </div>
+
+            <div class='sandbox-para'>
+                &emsp;UDATE User_Post<br>
+                &emsp;SET user_id_fk = 100<br> 
+                &emsp;WHERE User_Post.user_post_id = 20<br>
+                <br>
+                <b>user = User.objects.get(pk = 100)</b><br>
+                <b>user_post = User_Post.objects.get(pk = 20)</b><br>
+                <b>user_post.user_id_fk = user</b>
+            </div>
+            <div class='sandbox-plain-para'>
+                Django also views the pk number as being synonymous with the instance, so this also works<br>
+                <b>user_post.user_id_fk = 100</b>
+             </div>
+   
+        </div>
+
+
+
+
+
+
+
+ 
+
+
+
+       
+
+
+
+
+ 
+
+
+        <div class='sandbox-para'>
+            <div class='sandbox-para-header'>
+                Adding Many 2 Many Field<br><br>
+                <div class='sandbox-para'>
+                    Many to Many relationships work slightly differntly in Django than they do in regular SQL.<br><br>
+                     In SQL there will be a table which holds the primary keys of both of the tables in the relationship, and queries are made on the tables of the relationship using this lookup table.<br><br>
+                     In a basic many-2-many relationship in Django, the m2m table is added as a field to one of the tables of the relationship and Django creates a 'through' table in the backgound which is invisibke to the developer. The Django API then provides methods to add and remove instances to/from this field. 
+                </div>
+
+                <div class='sandbox-para'>
+                    Although Many to Many relationships are coded slightly differntly in Django than in SQL, the differences are only from the point of view of the Django Developer. The database will have the same structure in a Django database as a reguilar SQL one, and you can run the raw SQL commands from within Django too.
+                </div>
+
+                
+                <div class='sandbox-para'>
+                    Before any instance can be added to a Many-To-Many field in Django, the entities must first exist, after which the many-2-many field is added.
+                </div>
+                <div class='sandbox-para'>
+                    In this example there is a Many-2-Many relationship between the User_Profile table and the User table called 'Mutes'. A User can mute many user_profiles and a User+Profile can be muted by many users.
+                </div>
+            </div>
+
+            <div class='sandbox-para'>
+                <div> In SQL it might be something like this</div>
+                &emsp;INSERT INTO User_Profile (user_profile_id, user_id_fk)<br>
+                &emsp;VALUES (50, 10)<br> 
+                <br>
+                &emsp;INSERT INTO User (id)<br>
+                &emsp;VALUES (10)<br> 
+                <br>
+                &emsp;INSERT INTO Mutes (user_id, user_profile_id)<br>
+                &emsp;VALUES (10, 50)<br> <br>
+                <div class='sandbox-para'>
+                    In Django the Mutes table becomes an attribute of either table in the relationship and instances are added to it. In this case the Mutes Many-2-Many through table is added to the User_Profie model and entities are added thus;
+                </div>
+                <br>
+                pepe = <b>User_Profile</b>.objects.get(moniker = 'pepe')<br>
+                ben = <b>User</b>.objects.get(username = 'ben')<br><br>
+                <b>pepe.mutes.add(ben)</b><br>
+                <div>To remove ben from the mutes list;</div>
+                <b>pepe.mutes.remove(ben)</b><br>
+                <br>
+                <div class='sandbox-para'>
+                    This can also be done from the other viewpoint using the related_name defined along with the m2m field. This assumes the related_name = "user_profile_mutes"
+                </div>
+                ben__user_profile_mutes.add(pepe)<br>
+                ben__user_profile_mutes.remove(pepe)<br>
+
+
+            <div class='sandbox-plain-para'>
+                There a whole HOWTO Devoted to Many-2-Many's
+             </div>
+   
+        </div>
+
+
+       
+
+
+
+
+
+
+
+        <div class='sandbox-para'>
+            
+        </div>
+    </div>
+</div>
+
+
+{%endblock%}
+

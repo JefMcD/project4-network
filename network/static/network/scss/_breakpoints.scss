@@ -1,0 +1,340 @@
+
+
+
+// All Screen Sizes between 0 and 499
+@media only screen and (min-width:0px) and (max-width:499px){    // Tiny Mobile Devices (Below Browser Minimum of 500px)
+    // Cant Test
+} 
+
+
+
+
+// All Screen Sizes between 500 and 749px
+@media only screen and (min-width:500px) and (max-width:749px){    // Mobile Devices
+    ///////////////////////////////////////////////////
+    /// 
+    ///     navbar
+    /// 
+    /////////////////////////////////////////////////
+    
+    .nav-top-section{
+        width: 3rem;
+        margin-bottom: 1rem;
+    }
+    .profile-enerjon{
+        margin-bottom: 1rem;
+        margin-left: auto;
+        margin-right: auto;
+    
+        .network-title{
+            display: none;
+        }
+    }
+
+    .nav-logo-wrapper{
+        width: 5rem;
+        margin-top: 0rem;
+    }
+
+
+    .small-avatar-wrapper{
+        width: 3rem;
+    }
+    .small-avatar{
+        width: 3rem;
+    }
+
+    .desktop-only{
+        display: none;
+    }
+
+    .left-nav-panel{
+        width: 5rem;
+    }
+
+    .nav-link{
+        width: 3rem;
+        padding: 0.5rem;
+
+        .nav-item-icon{
+            width: 3rem;
+            margin-right: 0rem;
+            
+        }
+    }
+
+    .emojis-list-flex{
+        .emoji{
+            font-size: 16pt;
+            margin-right: 0.4rem;
+            padding-left: 0.1rem;
+            padding-bottom: 0.1rem;
+        }
+    }
+
+    .right-additional-panel{
+        display: none;
+    }
+
+} 
+
+
+
+
+
+
+
+
+
+
+// All Screen Sizes between 750 and 879
+@media only screen and (min-width:750px) and (max-width:879px){    // large Mobile
+    ///////////////////////////////////////////////////
+    /// 
+    ///     navbar
+    /// 
+    //////////////////////////////////////////////////
+    .nav-top-section{
+        width: 3rem;
+        margin-bottom: 1rem;
+    }
+    .profile-enerjon{
+        margin-bottom: 1rem;
+        margin-left: auto;
+        margin-right: auto;
+    
+        .network-title{
+            display: none;
+        }
+    }
+
+    .nav-logo-wrapper{
+        width: 5rem;
+        margin-top: 0rem;
+    }
+
+
+    .desktop-only{
+        display: none;
+    }
+
+    .small-avatar-wrapper{
+        display: 2rem;
+    }
+    .small-avatar{
+        display: 2rem;
+    }
+
+    .left-nav-panel{
+        width: 5rem;
+    }
+
+    .nav-link{
+        width: 3rem;
+        padding: 0.5rem;
+
+        .nav-item-icon{
+            width: 3rem;
+            margin-right: 0rem; 
+        }
+    }
+
+
+    .emojis-list-flex{
+        .emoji{
+            font-size: 16pt;
+            margin-right: 0.4rem;
+            padding-left: 0.1rem;
+            padding-bottom: 0.1rem;
+        }
+    }
+
+
+    .right-additional-panel{
+        display: none;
+    }
+
+    .nav-bottom-section{
+        width: 3rem;
+    }
+
+} 
+
+
+
+
+
+// All Screen Sizes between 880 and 1025
+@media only screen and (min-width:880px) and (max-width:1025px){   // Tablets & Small Laptops Devices
+    ///////////////////////////////////////////////////
+    /// 
+    ///     navbar
+    /// 
+    /// ///////////////////////////////////////////////
+    
+    .nav-top-section{
+        width: 10rem;
+        margin-bottom: 1rem;
+        margin-left: 0;
+        padding: 0;
+
+        //border: 2px solid black;
+    }
+
+    .profile-enerjon{
+        margin-bottom: 1rem;
+        .network-title{
+            font-size: 24pt;
+        }
+    }
+    .nav-logo-wrapper{
+        width: 8rem;
+        margin-top: 0rem;
+
+        //border: 1px solid red;
+    }
+
+
+
+    .left-nav-panel{
+        width: 12rem;
+    }
+    .nav-link{
+        width: 10rem;
+        padding: 0.5rem;
+        .nav-item-icon{
+            width: 1.5rem;
+            margin-right: 0.5rem;
+        }
+    }
+
+    .nav-label{
+        font-family: inherit;
+        font-size: 14pt;
+        padding-bottom: 0.5rem;
+    }
+
+    .nav-bottom-section{
+        width: 10rem;
+    }
+
+
+    .emojis-list-flex{
+        .emoji{
+            font-size: 16pt;
+            margin-right: 0.2rem;
+            padding-left: 0.1rem;
+            padding-bottom: 0.1rem;
+        }
+    }
+
+
+} 
+
+
+
+
+
+
+
+
+// All Screen Sizes between 1026 and 1200
+@media only screen and (min-width:1026px) and (max-width:1200px){   // Laptops & Desktops
+    ///////////////////////////////////////////////////
+    /// 
+    ///     navbar
+    /// 
+    /// ///////////////////////////////////////////////
+
+    .nav-top-section{
+        width: 12rem;
+        margin-bottom: 1rem;
+        margin-left: 0;
+        padding: 0;
+
+        //border: 2px solid black;
+    }
+
+    .profile-enerjon{
+        margin-bottom: 1rem;
+        .network-title{
+            font-size: 24pt;
+        }
+    }
+    .nav-logo-wrapper{
+        width: 10rem;
+        margin-top: 0rem;
+
+        //border: 1px solid red;
+    }
+
+
+    .left-nav-panel{
+        width: 14rem;
+    }
+
+    .nav-link{
+        width: 12rem;
+        padding: 0.5rem;
+
+        .nav-item-icon{
+            width: 1.5rem;
+            margin-right: 0.5rem;
+            
+        }
+    }
+
+    .nav-label{
+        font-family: inherit;
+        font-size: 14pt;
+        padding-bottom: 0.5rem;
+    
+    
+    }
+
+
+    .nav-bottom-section{
+        width: 12rem;
+    }
+
+
+    .emojis-list-flex{
+        .emoji{
+            font-size: 16pt;
+            margin-right: 0.2rem;
+            padding-left: 0.1rem;
+            padding-bottom: 0.1rem;
+        }
+    }
+
+} 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// All Screen Sizes between 1201 and 4801
+@media only screen and (min-width:1201px)  and (max-width:4801px){   // Larger Desktops and TV's
+    ///////////////////////////////////////////////////
+    /// 
+    ///     navbar
+    /// 
+    /// ///////////////////////////////////////////////
+
+
+
+}

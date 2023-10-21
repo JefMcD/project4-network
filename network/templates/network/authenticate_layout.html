@@ -1,0 +1,39 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <link rel="shortcut icon" href="#">
+        <title>{% block title %}Authentication{% endblock %}</title>
+         <link href="{% static 'network/css/style.css' %}" rel="stylesheet">
+    </head>
+    <body>
+        <div class='main-window-wrapper'>
+
+            <div class="showcase-grid-wrapper">
+                {% include 'network/front-page/showcase.html' %}
+            </div>
+
+
+            <div class = "network-main-flexbox">
+
+                <div class="authenticate-main-wrapper">
+
+                    <div class = "authenticate-hero-wrapper">
+                        <img src="{% static 'network/images/logos/network-grey.svg' %}">
+                    </div>
+            
+                    <div class = "site-enerjon">
+                        <div class="network-title">network</div>
+                        <div class="tagline">Get Connected</div>
+                    </div>
+
+                    {% block authenticate_panel %}
+                    {% endblock %}
+                </div>
+            </div>
+
+
+        </div>
+    </body>
+</html>

@@ -1,0 +1,729 @@
+@use 'network-theme';
+@use 'fonts';
+
+
+.profile-header-wrapper{
+    position: relative;
+    display: block;
+
+    width: 100%;
+    height: 20rem;
+
+    flex-shrink: 0;
+    padding: 0rem;
+
+    //border: 2px solid red;
+    background-color: network-theme.$lt-001;
+}
+
+.newsfeed-wrapper{
+    position: relative;
+    display: block;
+    width: 100%;
+    flex-grow: 1;
+
+    padding: 0.5rem;
+    overflow: auto;
+
+    //border: 2px solid rgb(0, 204, 255);
+    background-color: network-theme.$lt-001;
+}
+
+.paginator-stickyblock{
+    position: relative;
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    flex-shrink: 0;
+
+    width: 100%;
+    height: 3rem;
+    border: 2px solid  network-theme.$dk-002;
+    background-color: network-theme.$lt-002;
+
+    z-index: 1;
+}
+
+.paginator-btn{
+    position: relative;
+    display: block;
+    width: 1rem;
+    margin: 0.5rem;
+    aspect-ratio: 1/1;
+
+    .paginator-img{
+        width: 100%;
+        object-fit: contain;
+    }
+
+    transition-property: filter;
+    transition-duration: 250ms;
+    transition-timing-function: cubic-bezier();
+}
+
+.paginator-btn:hover,
+.paginator-btn:focus,
+.paginator-btn:target{
+    filter: network-theme.$lt-orange-filter;
+
+}
+
+
+
+.feedpost-wrapper{
+    position: relative;
+    display: block;
+    width: 100%;
+
+    margin-bottom: 0.5rem;
+    
+    border: 2px solid rgb(0, 64, 80);
+    border-radius: 1rem;
+    background-color: network-theme.$lt-002;
+}
+
+.feedpost-header{
+    position: relative;
+    display: flex;
+    justify-content: flex-start;
+    
+    width: 100%;
+
+    
+    border-top-left-radius: 1rem;
+    border-top-right-radius: 1rem;
+    border-bottom: 2px solid network-theme.$dk-002;
+    background-color: network-theme.$lt-002;
+
+    .feedpost-avatar-wrapper{
+        position: relative;
+        display: block;
+        width: 2.5rem;
+        height:2.5rem;
+        margin: 0.3rem;
+        margin-right: 1rem;
+        overflow: hidden;
+        
+        border: 2px solid network-theme.$dk-004;
+        border-radius: 50%;
+    
+        .feedpost-avatar{
+            position: relative;
+            display: block;
+            width: 100%;
+            object-fit: contain;
+        }
+    }
+
+    .feedpost-username{
+        position: relative;
+        display: block;
+        flex-grow: 1;
+
+        padding:0.3rem;
+        
+        font-size: 20pt;
+        font-weight: 500;;
+        //border: 2px solid rgb(0, 64, 80);
+        //background-color: network-theme.$lt-002;
+    
+    }
+}
+
+
+
+
+
+.feedpost-body{
+    position: relative;
+    display: block;
+    width: 100%;
+
+    padding: 0.5rem;
+    
+    border-bottom: 2px solid rgb(0, 64, 80);
+    //background-color: network-theme.$lt-002;
+
+    .feedpost-title{
+        position: relative;
+        display: block;
+        width: 100%;
+        font-size: 14pt;
+        font-weight: 400;;
+        
+      //  border: 2px solid rgb(0, 64, 80);
+      //  background-color: network-theme.$lt-002;
+    }
+
+    .feedpost-message{
+        position: relative;
+        display: block;
+        width: 100%;
+        
+       // border: 2px solid rgb(0, 64, 80);
+       // background-color: network-theme.$lt-002;
+    }
+
+    .feedpost-image-wrapper{
+        position: relative;
+        display: block;
+        width: 100%;
+
+
+        .feedpost-image{
+            width: 100%;
+            object-fit: contain;
+        }
+    }
+    
+}
+
+
+
+.feedpost-footer{
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    
+    //border: 2px solid rgb(0, 64, 80);
+    //background-color: network-theme.$lt-002;
+
+    .star-icon-wrapper{
+        position: relative;
+        display: block;
+        width: 1.2rem;
+        flex-shrink: 0;
+        margin-right: 0.5rem;
+        margin-left: 2.5rem;
+        padding-top: 0.2rem;
+
+        cursor: pointer;
+        
+        //border: 1.5px solid rgb(167, 142, 0);
+        //background-color: network-theme.$lt-002;
+        .star-icon{
+            width: 100%;
+            object-fit: contain;
+
+            transition-property: filter;
+            transition-duration: 250ms;
+            transition-timing-function: cubic-bezier();
+        }
+
+        .star-icon-active{
+            filter: network-theme.$lt-orange-filter;
+
+        }
+    }
+    .upduke-count{
+        position: relative;
+        display: block;
+        width: 5rem;
+        flex-shrink: 0;
+        flex-grow: 0;
+        font-size: 14pt;
+        padding-bottom: 0.2rem;
+        //border: 2px solid rgb(0, 64, 80);
+        //background-color: network-theme.$lt-002;
+    }
+
+    .edit-post-wrapper{
+        position: relative;
+        display: block;
+        width: 1.2rem;
+        margin-right: 1rem;
+        padding-top: 0.2rem;
+        flex-shrink: 0;
+        flex-grow: 0;
+        font-size: 14pt;
+
+        //border: 2px solid rgb(0, 64, 80);
+        //background-color: network-theme.$lt-002;
+
+        cursor: pointer;
+        
+        //border: 1.5px solid rgb(167, 142, 0);
+        //background-color: network-theme.$lt-002;
+        .edit-post-icon{
+            max-width: 100%;
+            object-fit: contain;
+
+            transition-property: filter;
+            transition-duration: 250ms;
+            transition-timing-function: cubic-bezier();
+        }
+
+        .edit-post-icon:hover{
+            filter: network-theme.$lt-orange-filter;
+
+        }
+    }
+
+
+    .delete-post-wrapper{
+        position: relative;
+        display: block;
+        width: 1.2rem;
+        padding-top: 0.2rem;
+        flex-shrink: 0;
+        flex-grow: 0;
+        font-size: 14pt;
+
+        //border: 2px solid rgb(0, 64, 80);
+        //background-color: network-theme.$lt-002;
+
+        .delete-post-icon{
+            max-width: 100%;
+            object-fit: contain;
+
+            transition-property: filter;
+            transition-duration: 250ms;
+            transition-timing-function: cubic-bezier();
+        }
+
+        .delete-post-icon:hover{
+            filter: network-theme.$lt-orange-filter;
+
+        }
+    }
+
+
+    .feedpost-date-wrapper{
+        display: flex;
+        justify-content: flex-end;
+        flex-grow: 1;
+
+        .feedpost-date{
+            position: relative;
+            display: block; 
+            margin-right: 0.5rem;  
+            //border: 2px solid rgb(0, 64, 80);
+            //background-color: network-theme.$lt-002;
+        }
+    }
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.profile-enerjon{
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    color: network-theme.$dk-003;
+    font-family: fonts.$hustle;
+    margin-bottom: 1rem;
+    margin-left: auto;
+    margin-right: auto;
+    //border: 2px solid black;
+
+    .network-title{
+        font-size: 30pt;
+    }
+    .tagline{
+        font-family: fonts.$font-stack1;
+        font-size: 16pt;
+        text-align: center;
+
+        //border: 2px solid black;
+    }
+}
+
+
+.edit-profile-header-block{
+    position: absolute;
+    display: none;
+
+    top: 5rem;
+    left: 0;
+    width: 100%;
+    height: 50rem;
+
+    padding: 1rem;
+    margin: 0;
+
+    //border: 2px solid red;
+    //background-color: network-theme.$red-001;
+}
+.edit-profile-wrapper{
+    position: relative;
+    display: block;
+    width: 100%;
+    height: 48rem;
+
+    padding: 1rem;
+
+    //border: 2px solid black;
+    //background-color: network-theme.$white-001;
+
+}
+
+.message-block{
+    position: relative;
+    display: block;
+
+    width: 100%;
+    text-align: center;
+}
+.error-block{
+    position: relative;
+    display: block;
+
+    width: 100%;
+    text-align: center;
+    color: network-theme.$red-001;
+}
+.profile-background{
+    position: absolute;
+    display: block;
+    width:100%;
+    height: 10rem;
+
+    //border: 2px solid black;
+    overflow: hidden;
+    img{
+        position: absolute;
+        width: 100%;
+        object-fit: cover;
+    }
+}
+
+
+.avatar-container{
+    position: absolute;
+    display:block;
+    width: 100%;
+    height:10rem;
+    margin-left: 1rem;
+
+    //border: 2px solid darkmagenta;
+
+}
+
+.profile-avatar{
+    position: absolute;
+    display: block;
+    width:8rem;
+    height: 8rem;
+
+    top: 5rem;
+
+    border: 2px solid network-theme.$dk-003;
+    border-radius: 50%;
+    overflow: hidden;
+    img{
+        width: 100%;
+        object-fit: cover;
+    }
+}
+
+.user-bio-container{
+    position: relative;
+    display: block;
+    width: 100%;
+    height: 10rem;
+    top: 10rem;
+    padding: 0 1rem;
+}
+
+.follow-info-container{
+    position: relative;
+    display: flex;
+    justify-content: flex-end;
+    width: calc(100% - 7rem);
+    height: 3rem;
+    margin-left: 8rem;
+    //border: 2px solid rgb(192, 192, 192);
+
+    .follower-info-flexbox{
+        position: relative;
+        display: flex;
+        justify-content: flex-start;
+        align-items: center;
+    
+        width: 100%;
+        height: 3rem;
+    
+        //color:  network-theme.$red-003;
+        //border: 2px solid black;
+    }
+    
+    .follow-block{
+        position: relative;
+        display: flex;
+        justify-content: flex-start;
+        align-items: center;
+        width: 8rem;
+        height: 3rem;
+    
+        //border: 2px solid green;
+        //background-color: rgb(214, 214, 214);
+    }
+    
+    .follower-label{
+        display: inline-block;
+        width: 5rem;
+        height: 1.5rem;
+        line-height: normal;
+        //border: 2px solid black;
+    }
+    
+    .follower-count{
+        display: inline-block;
+        width: 3rem;
+        height: 1.5rem;
+        line-height: normal;
+        //border: 2px solid black;
+    }
+    
+}
+
+.profile-edit-btn-container{
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    top: -10rem;
+    left: 80%;
+
+    width: 8rem;
+    height: 3rem;
+    //border: 2px solid rgb(192, 192, 192);
+}
+
+
+
+
+
+
+.profile-btn-wrapper{
+    position: relative;
+    display: flex;
+    width: 100%;
+    height: 3rem;
+    border: 2px solid black;
+ 
+}
+
+
+.follow-btn-wrapper{
+    position: relative;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    width: 100%;
+    height: 3rem;
+    //border: 2px solid black;
+ 
+}
+
+.follow-button{
+    position: relative;
+    display: block;
+    text-align: center;
+
+    width: 5rem;
+    height: 2rem;
+    margin-right: 1rem;
+
+    cursor: pointer;
+    font-size: 14pt;
+    border: 2px solid network-theme.$grey-002;
+    border-radius: 1rem;
+    color: network-theme.$dk-004;
+    background-color: network-theme.$lt-002;
+
+    transition-property: color, background-color;
+    transition-duration: 250ms;
+    transition-timing-function: cubic-bezier();
+}
+
+.follow-button:hover,
+.follow-button:focus,
+.follow-button:target{
+    color: network-theme.$lt-002;
+    background-color: network-theme.$dk-002;
+}
+
+.profile-btn{
+    position: absolute;
+    display: block;
+    text-align: center;
+
+    width: 7rem;
+    height: 2rem;
+
+    margin-right: 1rem;
+    margin-bottom: 0.5rem;
+
+    border: 2px solid network-theme.$red-002;
+    border-radius: 1rem;
+
+    cursor: pointer;
+    font-size: 14pt;
+    color: network-theme.$dk-002;
+
+    background-color: network-theme.$lt-002;
+}
+
+.stacked-btn{
+    position: absolute;
+    display:block;
+    top: 0;
+    left: 10rem;
+
+    border: 2px solid grey;
+}
+#follow-btn{
+    position: relative;
+    display: block;
+}
+
+#unfollow-btn{
+    position: relative;
+    display: block;
+}
+
+
+#edit-profile-btn{
+    display: inline-block;
+
+    width: 4rem;
+    height: 1.5rem;
+    padding-bottom: 0.3rem;
+    font-size: 12pt;
+
+    color: network-theme.$dk-004;
+    background-color: network-theme.$lt-002;
+
+    transition-timing-function: cubic-bezier();
+    transition-property: color, background-color;
+    transition-duration: 250ms;
+}
+#edit-profile-btn:hover,
+#edit-profile-btn:target,
+#edit-profile-btn:focus{
+
+    color: network-theme.$red-002;
+    background-color: network-theme.$white-001;
+}
+
+.edit-profile-btn-wrapper{
+    position: relative;
+    display: flex;
+    justify-content: flex-end;
+
+    width: 100%;
+    margin-top: 0.5rem;
+
+}
+
+
+.profile-moniker{
+    position: relative;
+    display: block;
+    text-align: left;
+
+    width: 100%;
+    height: 2rem;
+    font-size: 20pt;
+
+}
+
+.profile-website{
+    position: relative;
+    display: block;
+    text-align: left;
+
+    width: 100%;
+    height: 1rem;
+    font-size: 12pt;
+}
+
+.profile-caption{
+    position: relative;
+    display: block;
+    margin-top: 1rem;
+
+}
+
+//
+// CSS Syling the Choose File Button 
+// on a Form Image Input
+// https://nikitahl.com/custom-styled-input-type-file
+.choose-file-btn{
+    display: inline-block;
+    padding: 0.4rem;
+    height: 3rem;
+    aspect-ratio: 1/1;
+    color: white;
+    background-color: green;
+    cursor: pointer;
+}
+
+.choose-file-btn input[type="file"]{
+    display: none;
+}
+
+input[type=file] {
+    width: 350px;
+    max-width: 100%;
+    font-family: inherit;
+    color:network-theme.$dk-004;
+    padding: 5px;
+    background-color:network-theme.$lt-003;
+    border-radius: 10px;
+    border: 1px solid network-theme.$dk-003;
+  }
+
+input[type=file]::file-selector-button {
+    margin-right: 20px;
+    border: none;
+    background-color: network-theme.$lt-002;
+    padding: 0.5rem 1rem;
+    border-radius: 0.5rem;
+    color: network-theme.$purple-002;
+    cursor: pointer;
+    transition: background-color .2s ease-in-out;
+}
+  
+input[type=file]::file-selector-button:hover {
+    background:network-theme.$white-001;
+    color:  network-theme.$red-003;
+}
+  
+
+.side-panel-news{
+    position: relative;
+    display: block;
+    width: 95%;
+    height:30rem;
+    padding: 0.2rem;
+    margin: auto;
+    overflow: scroll;
+
+    background-color:network-theme.$lt-003;
+    border-radius: 10px;
+    border: 1px solid network-theme.$dk-003;
+
+}

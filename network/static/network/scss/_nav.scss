@@ -1,0 +1,152 @@
+
+@use 'network-theme';
+@use 'fonts';
+
+
+.nav-top-section{
+    position: relative;
+    display: block;
+
+    width: 18rem;
+    height: 20%;
+
+    margin-bottom: 1rem;
+
+    //background-color: network-theme.$semi-opaque-007;
+}
+
+.left-nav-panel{
+    position: relative;
+    display: inline-block;
+    width: 20rem;
+    height: 100vh;
+
+    padding: 1rem;
+
+    //border: 2px solid rgb(34, 0, 0);
+    //background-color: purple;
+
+}
+
+
+.nav-logo-wrapper{
+    position: relative;
+    display: block;
+    width: 10rem;
+    margin-top: 0rem;
+
+    //border: 2px solid rgb(34, 0, 0);
+    //background-color: purple;
+
+    img{
+        width: 100%;
+    }
+
+}
+
+.nav-middle-section{
+    position: relative;
+    display: block;
+
+    width: 18rem;
+    height: 50%;
+
+    //background-color: network-theme.$semi-opaque-008;
+}
+
+.nav-bottom-section{
+    position: relative;
+    display: block;
+
+    width: 18rem;
+    height: 30%;
+
+    //background-color: network-theme.$semi-opaque-009;
+    //border: 2px solid black;
+
+    .link-wrapper{
+        position:relative;
+        display:block;
+    }
+
+    .small-avatar{
+        position: relative;
+        display:block;
+        width: 5rem;
+        aspect-ratio: 1/1;
+    
+        border: 2px solid network-theme.$dk-002;
+        border-radius: 50%;
+        overflow: hidden;
+        img{
+            width: 100%;
+            object-fit: cover;
+
+        }
+    
+    }
+}
+
+.small-avatar-wrapper{
+    position: relative;
+    display: flex;
+    justify-content: center;
+
+    width: 100%;
+    margin-bottom: 1rem;
+
+    //border: 2px solid black;
+
+}
+
+.nav-link{
+    position: relative;
+    display: flex;
+
+    width: 100%;
+    height: 3rem;
+
+    padding: 0.5rem;
+    margin-bottom: 0.5rem;
+
+    cursor: pointer;
+
+    text-align: center;
+    justify-content: flex-start;
+    align-items: center;
+
+    border: 2px solid black;
+    border-radius: 1rem;
+    background-color: network-theme.$lt-002;
+
+    transition-property: color, background-color;
+    transition-duration: 250ms;
+    transition-timing-function: cubic-bezier();
+}
+
+.nav-link > .nav-item-icon{
+    width: 1.5rem;
+    margin-right: 1rem;
+    
+    img{
+        width: 100%;
+    }
+}
+.nav-link:hover,
+.nav-link:focus,
+.nav-link:target{
+    background-color: network-theme.$lt-001;
+    color: network-theme.$red-002;
+}
+.nav-label{
+    font-family: inherit;
+    font-size: 18pt;
+    padding-bottom: 0.5rem;
+
+
+}
+
+
+#logout-btn{
+
+}

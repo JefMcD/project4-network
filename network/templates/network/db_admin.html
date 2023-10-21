@@ -1,0 +1,96 @@
+{% extends "network/db_admin_layout.html" %}
+{%load static%}
+{% block center_panel %}
+
+    <section class='db-admin-wrapper'>
+
+        <h1> DB Admin </h1>
+
+        <div class="main-center-stage">
+            <div class = 'restart-wrapper'>
+                <div class='db-button-row'>
+
+                    <a href="{% url 'network:inactive' %}">
+                        <div class="curtain-btn db-button">
+                            <div class="curtain-btn-hover-state" ></div>
+                            <span>Reset To Basline</span>
+                        </div>
+                    </a>
+                </div>
+
+                <div class='db-button-row'>  
+
+                    <a href="{% url 'network:insert_users' %}">
+                        <div class="curtain-btn db-button">
+                            <div class="curtain-btn-hover-state" ></div>
+                            <span>Insert Users</span>
+                        </div>
+                    </a>
+
+                    <a href="{% url 'network:reset_su' %}">
+                        <div class="curtain-btn db-button">
+                            <div class="curtain-btn-hover-state" ></div>
+                            <span>Reset SU</span>
+
+                        </div>
+                    </a>
+
+                    <a href="{% url 'network:insert_text_posts' %}">
+                        <div class="curtain-btn db-button">
+                            <div class="curtain-btn-hover-state" ></div>
+                            <span>Insert Text Posts</span>
+                        </div>
+                    </a>    
+
+                    <a href="{% url 'network:inactive' %}">
+                        <div class="curtain-btn db-button">
+                            <div class="curtain-btn-hover-state" ></div>
+                            <span>Inactive</span>
+                        </div>
+                    </a>
+
+                    <a href="{% url 'network:inactive' %}">
+                        <div class="curtain-btn db-button">
+                            <div class="curtain-btn-hover-state" ></div>
+                            <span>Inactive</span>
+                        </div>
+                    </a>
+                </div>
+
+
+                <div class='db-button-row'>
+                    <a href="{% url 'network:delete_all' %}">
+                        <div class="curtain-btn db-button db-delete">
+                            <div class="curtain-btn-hover-state" ></div>
+                        <span>Delete All</span>
+                        </div>
+                    </a>
+
+                    <a href="{% url 'network:inactive' %}">
+                        <div class="curtain-btn db-button db-delete">
+                            <div class="curtain-btn-hover-state" ></div>
+                        <span>Inactive</span>
+                        </div>
+                    </a>
+
+                    <a href="{% url 'network:inactive' %}">
+                        <div class="curtain-btn db-button db-delete">
+                            <div class="curtain-btn-hover-state" ></div>
+                        <span>Inactive</span>
+                        </div>
+                    </a>
+                </div>
+                <div class='db-button-row'>
+                    <div class='footer'>{{message}}</div>
+                </div>
+            </div>
+
+        </div>
+    
+    </section>
+    
+ 
+    
+
+
+{% endblock %}

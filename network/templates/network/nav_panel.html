@@ -1,0 +1,124 @@
+{% load static %}
+
+<div class = 'nav-top-section'>
+    <div class = "profile-enerjon">
+        <div class = "nav-logo-wrapper">
+            <img src="{% static 'network/images/logos/network-orange.svg' %}">
+        </div>
+
+         <div class="network-title">Network</div>
+         
+    </div>
+</div>
+
+
+<div class = 'nav-middle-section'>
+
+    <div class = "nav-link" id = "post-btn">
+        <div class = 'nav-item-icon'>
+            <img src="{% static 'network/images/nav_icons/pencil.png' %}">
+        </div>
+        <div class = "nav-label desktop-only">
+            Post
+        </div>
+    </div>
+
+
+    <a href = "{% url 'network:profile' current_user_id 'allposts' %}">
+        <div class = "nav-link" id = 'all-posts-btn'>
+            <div class = 'nav-item-icon'>
+                <img src="{% static 'network/images/nav_icons/globe_black.svg' %}">
+            </div>
+            <div class = "nav-label desktop-only">
+                All Posts
+            </div>
+        </div>
+    </a>
+
+    <a href = "{% url 'network:profile' current_user_id 'frensposts' %}">
+        <div class = "nav-link" id = 'follower-posts-btn'>
+            <div class = 'nav-item-icon'>
+                <img src="{% static 'network/images/nav_icons/friends.png' %}">
+            </div>
+            <div class = "nav-label desktop-only">
+                Muse Feed
+            </div>
+        </div>
+    </a>
+
+    <div class = "nav-link" id = "notifications-btn">
+        <div class = 'nav-item-icon'>
+            <img src="{% static 'network/images/nav_icons/notification.png' %}">
+        </div>
+        <div class = "nav-label desktop-only">
+            Notifications
+        </div>
+    </div>
+
+    <div class = "nav-link" id = "messages-btn">
+        <div class = 'nav-item-icon'>
+            <img src="{% static 'network/images/nav_icons/mail.png' %}">
+        </div>
+        <div class = "nav-label desktop-only">
+            Messages
+        </div>
+    </div>
+
+    <div class = "nav-link" id = "noticeboard-btn">
+        <div class = 'nav-item-icon'>
+            <img src="{% static 'network/images/nav_icons/noticeboard.png' %}">
+        </div>
+        <div class = "nav-label desktop-only">
+            Noticeboard
+        </div>
+    </div>
+
+    <div class = "nav-link" id = "search-btn">
+        <div class = 'nav-item-icon'>
+            <img src="{% static 'network/images/nav_icons/search.png' %}">
+        </div>
+        <div class = "nav-label desktop-only">
+            Search
+        </div>
+    </div>
+</div>
+
+
+<div class = 'nav-bottom-section'>
+
+        <a href="{% url 'network:profile'  user.pk 'homeposts' %}">
+            <div class = 'small-avatar-wrapper'>
+                <div class = 'small-avatar'>
+                    <img src = "{{current_user.avatar.url}}">
+                </div>
+            </div>
+        </a>
+
+        <div class = "link-wrapper">
+
+            <a class = "nav-link" id = 'user-profile-btn' href="{% url 'network:profile'  user.pk 'homeposts' %}">
+
+
+                <div class = 'nav-item-icon'>
+                    <img src="{% static 'network/images/nav_icons/profile-user.png' %}">
+                </div>
+
+
+                <div class = "nav-label desktop-only">
+                    {{ user.username }}
+                </div>
+            </a>
+        </div>
+
+        <div class = "link-wrapper">
+            <a class = "nav-link" id = "logout-btn" href="{% url 'network:logout' %}">
+                <div class = 'nav-item-icon'>
+                    <img src="{% static 'network/images/nav_icons/logout-red.svg' %}">
+                </div>
+                <div class = "nav-label desktop-only">
+                    Logout
+                </div>
+            </a>
+        </div>
+
+</div>

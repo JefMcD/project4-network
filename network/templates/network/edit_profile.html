@@ -1,0 +1,65 @@
+{% extends "network/layout.html" %}
+
+{% load static %}
+
+
+{% block left_panel%}
+
+    {% include 'network/nav_panel.html'%}
+
+{% endblock %}
+
+
+{% block center_panel %}
+    
+<!--
+    <div class='debug-window'>
+        <p id="viewsize"></p>
+    
+        <script>
+        var w = window.innerWidth;
+        var h = window.innerHeight;
+        
+        var x = document.getElementById("viewsize");
+        x.innerHTML = "Browser width: " + w + ", height: " + h + ".";
+        </script>
+    
+        <div class='debug-msg'>
+            {{error_message|safe}}
+        </div>
+    </div>
+-->
+
+<!-- Header Seaction. Background, Avatar, Tagline, Website-->
+
+<div class = 'profile-header-wrapper edit-profile-header-block'>
+
+    <div class = 'edit-profile-wrapper'><!-- 640px/40rem x 320px/20rem-->
+        <div class = 'edit-profile-message'>
+            <div class='edit-profile-header'> Edit Your Profile </div>        
+        </div>
+
+        <div class = "form-wrapper">
+            <form action = "{% url 'network:edit_profile' %}" method='POST' enctype="multipart/form-data" class='edit-profile-form'>
+                {% csrf_token %}
+                {{edit_user_profile_form.as_div}}
+                <div class = "edit-profile-btn-wrapper">
+                    <input class = "edit-profile-btn" type='submit'>
+                </div>
+            </form>
+        </div>
+        <div class = 'message-block'>{{message}}</div>
+        <div class = 'error-block'>{{error}}</div>
+    </div>
+
+</div>
+
+
+<!-- Area Displaying Posts-->
+
+
+{% endblock %}
+
+{% block additional %}
+    <span>TODO</span>
+{% endblock %}

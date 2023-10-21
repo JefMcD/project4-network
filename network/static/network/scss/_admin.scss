@@ -1,0 +1,161 @@
+
+@use 'network-theme';
+@use 'fonts';
+
+
+.db-admin-wrapper{
+    position: relative;
+    display: block;
+
+    top: 0rem;
+    left: 0;
+    width: 60rem;
+    margin: auto;
+    height: 100%;
+
+
+    background-color:network-theme.$green-001;
+    border: 5px solid blue;
+
+    overflow: hidden;
+
+}
+
+.main-center-stage{
+    position:relative;
+    display: flex;
+    flex-direction: row;
+    justify-content:center;
+
+    top: 6rem;
+    left: 0;
+
+    background-color: rgb(0, 158, 53);
+    border-top: 5px solid network-theme.$dk-001;
+    border-bottom: 5px solid network-theme.$dk-001;
+}
+
+.restart-wrapper{
+    position: relative;
+    display: block;
+ 
+    padding: 1rem;
+    width: 50rem; 
+    height: 75vh; 
+}
+
+.db-button-row{
+    position: relative;
+    display: flex;
+    justify-content: space-around;
+
+    h1{
+        font-size: 24pt;
+    }
+    h2{
+        font-size: 18pt;
+    }
+    //background-color: skyblue;
+    //border: 2px solid darkblue;
+    //color: darkgreen;  
+    padding: 1rem;
+    width: 50rem;  
+}
+
+.curtain-btn-wrapper{
+    position:relative;
+    display: flex;
+    justify-content: center;
+    margin-top:3rem;
+}
+
+
+.curtain-btn {
+    position: relative;
+    display: inline-block;
+
+    width: 150px;
+    height: 50px;
+
+    top: 0rem;
+    left: 0rem;
+
+    margin: 0.2rem;
+
+    background-color: network-theme.$dk-001;
+    border-style: solid;
+    border-color: network-theme.$lt-003;
+    border-width: 3px;
+
+    text-align: center;
+    cursor: pointer;
+    overflow:hidden;
+    z-index: 1;
+
+    span{
+        font-size: 12pt;
+        font-weight:400px;
+        z-index: 1;
+        color:network-theme.$white-001;
+        transition-property: color, z-index;
+        transition-timing-function: ease-out;
+        transition-duration: 350ms;
+    }
+
+
+
+    .curtain-btn-hover-state {
+        position: absolute;
+        display: inline-block;
+    
+        width: 100%;
+        height: 100%;
+    
+        top: 100%;
+        left: 0;
+    
+        background-color:network-theme.$white-001;
+    
+        transform: translateY(0);
+        transition-property: color,  background-color, transform;
+        transition-timing-function: ease-out;
+        transition-duration: 300ms;
+        transition-delay: 200ms;
+    
+        cursor: none;
+        pointer-events: none;
+        z-index: -1;
+    
+    }
+    
+
+}
+
+.curtain-btn:hover .curtain-btn-hover-state{
+    background-color:network-theme.$white-001;
+    transform: translateY(-100%);
+    transition-duration: 500ms;
+
+    transition-property: color, background-color, transform;
+    transition-timing-function: ease-out;
+    transition-duration: 300ms;
+    transition-delay: 200ms;
+
+}
+
+.curtain-btn:hover span {
+    color: network-theme.$orange-002;
+    z-index: 3;
+}
+
+
+.db-button{
+    width: 10rem;
+    height: 4rem;
+    padding-top: 1.2rem;
+    background-color: network-theme.$green-003;
+
+}
+
+
+

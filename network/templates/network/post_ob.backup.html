@@ -1,0 +1,39 @@
+{% load static%}
+
+{% for post in page_obj%}
+
+<div class = 'feedpost-wrapper newsfeed-pg{{page_num}}' data-post_id = {{post.user_post_id}}>
+    <a href="{% url 'network:profile' post.user_id_fk.pk 'homeposts' %}">
+        <div class = 'feedpost-header'>
+            <div class = 'feedpost-avatar-wrapper'>
+                <img class = 'feedpost-avatar' src = "{{ post.user_id_fk.user_profile.first.avatar.url  }}">
+            </div>
+            <div class = 'feedpost-username'>{{post.user_id_fk.username}}</div>
+        </div>
+    </a>
+
+    <div class = 'feedpost-body'>
+        <div class = 'feedpost-title'>{{post.title}}</div>
+        <div class = 'feedpost-message'>{{post.message}}</div>
+        {% if post.image_file %}
+            <div class = 'feedpost-image_wrapper'>
+                <img class = 'feedpost-image' src ="{{post.image_file.url}}">
+            </div>
+        {% endif %}
+
+    </div>
+    <div class = 'feedpost-footer'>
+        <div class = "star-icon-wrapper">
+            <img class='star-icon' src = "{% static 'network/images/post_icons/star_grey.svg' %}">
+        </div>
+        <div class = 'upduke-count'>
+            {{post.engagement.upduke}}
+        </div>
+        <div class = 'feedpost-date-wrapper'>
+            <div class = 'feedpost-date'>{{post.date}}</div>
+        </div>
+    </div>
+
+
+</div>
+{%endfor%}

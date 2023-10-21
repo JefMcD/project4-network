@@ -1,0 +1,250 @@
+{% extends "network/main_layout.html" %}
+{% load static %}
+
+
+{% block left_panel%}
+    {% include 'network/nav_panel.html'%}
+{% endblock %}
+
+
+
+
+
+{% block center_panel %}
+
+<!-- 
+<div class='debug-window'>
+    <p id="viewsize"></p>
+
+    <script>
+    var w = window.innerWidth;
+    var h = window.innerHeight;
+    
+    var x = document.getElementById("viewsize");
+    x.innerHTML = "Browser width: " + w + ", height: " + h + ".";
+    </script>
+
+    <div class='debug-msg'>
+        <div>TEST User: {{test_user}}: {{test_user_id}}</div>
+        <div>TEST Post: {{test_post}}</div>
+        <div>Bowfren Engaged: {{user_engaged}}</div>
+        <div>Bowfren Upduke Status: {{upduke_status}}</div>
+        {{error_message|safe}}
+    </div>
+</div>
+
+-->
+<div class = 'profile-header-wrapper'   data-profileuserid = {{profile_user_id}} 
+                                        data-currentuserid = {{current_user_id}} 
+                                        data-followingstatus = {{following_status}} 
+                                        data-user_is_home = {{home_status}}
+                                        data-postfeed_name = {{postfeed_name}}
+                                        data-pagenum = {{page_num}}>
+
+    <div class = 'profile-background'><!-- 640px/40rem x 320px/20rem-->
+            <img src = "{{profile.background_img.url}}">
+    </div>
+    <div class='avatar-container'>
+        <div class = 'profile-avatar'>
+            <img src = "{{profile.avatar.url}}">
+        </div>
+    </div>
+
+    <div class ='user-bio-container'>
+
+        <div class="follow-info-container">
+                <div class = "follower-info-flexbox">
+                    <div class = "follow-block">
+                        <span class = 'follower-label'>Followers</span> 
+                        <span class = 'follower-count'>{{followers}}</span>
+                    </div>
+                    <div class = "follow-block">
+                        <span class = 'follower-label'>Following</span> 
+                        <span class = 'follower-count'>{{following}}</span>
+                    </div>
+                </div>
+
+                {% if current_user_id == profile_user_id %}
+                    <!-- Current User looking at own profile so no Follow or Unfollow Buttons -->  
+                    <div class='profile-edit-btn-container'>
+                        <div class='profile-btn'  id='edit-profile-btn'>
+                            Edit
+                        </div>
+                    </div>
+                {%else%}
+                    <!-- Current User is looking at anotehrs profile so no Edit Profile Button-->
+                    <div class='follow-btn-wrapper' >
+                            <div class='follow-button stacked_btn' id = 'unfollow-btn'>
+                                UnFollow
+                            </div>
+
+                            <div class='follow-button stacked_btn' id = 'follow-btn'>
+                                Follow
+                            </div>
+                    </div>
+                {%endif%}  
+                
+
+
+        </div>
+        <div class = 'profile-moniker'>{{profile.moniker}}</div>
+        <div class = 'profile-website'>{{profile.website}}
+
+        </div>
+        <div class = 'profile-caption'>{{profile.caption}} 
+           
+  
+        </div>
+    </div>
+</div>
+
+
+
+<div class="newsfeed-wrapper" id='newsfeed'>
+    <!-- Get the list of posts and iterate through them. Create a Div for each post displaying its contents-->
+
+
+</div>
+
+
+<div class="paginator-stickyblock">
+    <div class = 'paginator-btn' id="prev-page-btn">
+        <img class = 'paginator-img' src = "{% static 'network/images/postfeed_icons/prev-grey.svg' %}">   
+    </div> 
+
+    <div class = 'paginator-btn' id="current-page-btn">
+        <img class = 'paginator-img' src = "{% static 'network/images/postfeed_icons/center-grey.svg' %}">   
+    </div> 
+
+    <div class = 'paginator-btn' id = "next-page-btn">
+        <img class = 'paginator-img' src = "{% static 'network/images/postfeed_icons/next-grey.svg' %}">   
+    </div> 
+
+</div>
+
+<div class = 'edit-profile-header-block'>
+
+    <div class = 'edit-profile-wrapper'><!-- 640px/40rem x 320px/20rem-->
+
+    
+
+
+        <div class = "edit-profile-form-wrapper">
+            <div class='edit-profile-header'> Edit Your Profile </div>    
+            <form action = "#" method='POST' enctype="multipart/form-data" class='edit-profile-form'>
+                {% csrf_token %}
+                {{edit_user_profile_form.as_div}}
+                <div class = "submit-btn-wrapper">
+                    <div class = 'form-btn' id = 'edit-profile-cancel-btn'>Cancel</div>
+                    <input type='submit' class = "form-submit" id='edit-profile-submit' value="OK">
+                </div>
+            </form>
+        </div>
+
+        <div class = 'message-block'>{{message}}</div>
+        <div class = 'error-block'>{{error}}</div>
+    </div>
+
+</div>
+
+
+<!-- New Post Panel -->
+<div class = 'new-post-wrapper'>
+    <div class='emojis-list-flex'>
+        <div class='emoji'> 😀 </div>
+        <div class='emoji'> 😄 </div>
+        <div class='emoji'> 😆 </div>
+        <div class='emoji'> 🤣 </div>
+        <div class='emoji'> 😂 </div>
+        <div class='emoji'> 😊 </div>   
+        <div class='emoji'> 😇 </div>
+        <div class='emoji'> 😍 </div>
+        <div class='emoji'> 😜 </div>
+        <div class='emoji' >😟 </div>
+        <div class='emoji'> 😡 </div>
+        <div class='emoji'> 💯 </div>
+    </div>
+    <div class = "new-post-form-wrapper">
+        <form  enctype="multipart/form-data" class = 'new-post-form'  method = 'POST' action = '#'>
+            {% csrf_token %}
+            {{new_post_form.as_p}} 
+            <!-- Image preview container -->
+
+            <div class="image-preview-wrapper">
+                <img src="" alt="Media Preview" id="image-preview">
+            </div>
+
+            <div class="media-uploads-flex">
+
+                <div class = 'default_choose_img_btn'>
+                    {{media_inputs.as_p}}
+                </div>
+
+                <div class = 'choose-media-icon-btn' id='image-media'>
+                    <img class='upload-icon' src="{% static 'network/images/post_icons/img_upload_w.svg' %}">
+                </div>
+
+                <div class = 'choose-media-icon-btn' id='video-media'>
+                    <img class='upload-icon' src="{% static 'network/images/post_icons/vid_upload_w.svg' %}">
+                </div>
+
+                <div class = 'choose-media-icon-btn' id='music-media'>
+                    <img class='upload-icon' src="{% static 'network/images/post_icons/mus_upload_w.svg' %}">
+                </div>
+
+                <div class="media-info-flex">
+                    <!-- Add a "Cancel" button to reset the ImageField -->
+                    <button type="button" class = "form-btn media-remove-btn" id="media-remove-btn">Remove</button>
+                    <div class = 'media-label' id='image-upload-name'>No File Uploaded</div>
+                </div>
+            </div>
+            <div class = "submit-btn-wrapper">
+                <div class = 'form-btn' id = 'new-post-cancel-btn'>Cancel</div>
+                <input type='submit' class = "form-submit" id = "new-post-submit" value="Post">
+            </div>
+        </form>
+    </div>
+</div>
+
+<!---->
+
+{% endblock %}
+
+
+
+{% block additional %}
+<!--
+    <a class = "nav-link" id = "search-btn" href="#">
+        <div class = 'nav-item-icon'>
+            <img src="{% static 'network/images/nav_icons/search.png' %}">
+        </div>
+        <div class = "nav-label desktop-only">
+            Search
+        </div>
+    </a>
+-->
+
+    <!--
+    <div class = 'side-panel-news'>
+
+    </div>
+
+
+    <div class='chess-game'>
+        <iframe src="https://livetactics.chessbase.com" width="300" height="340"></iframe>
+    </div>
+    -->
+
+{% endblock %}
+
+
+
+
+
+
+
+
+
+{% block script %}
+    <script src="{% static 'network/javascript/profile.js' %}?v1.002"></script>
+{% endblock %}

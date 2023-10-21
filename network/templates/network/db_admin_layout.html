@@ -1,0 +1,16 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>{% block title %}network Database Admin{% endblock %}</title>
+         <link href="{% static 'network/css/style.css' %}" rel="stylesheet">
+    </head>
+    <body>
+        <div class='main-window-wrapper'>
+            {% block center_panel %}
+
+            {% endblock %}
+        </div>
+    </body>
+</html>

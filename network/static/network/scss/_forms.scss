@@ -1,0 +1,500 @@
+@use 'network-theme';
+@use 'fonts';
+
+
+
+
+.std-form-wrapper{
+    position: relative;
+    display: block;
+    width: 100%;
+    height: 16rem;
+    padding: 1rem;
+
+    margin: auto;
+
+    color: network-theme.$black-001;
+    //border: 2px solid network-theme.$dk-002;
+    //background-color: network-theme.$white-001;
+
+}
+
+.login-form-wrapper{
+    position: relative;
+    display: block;
+    height: 18rem;
+
+    margin: 0;
+    padding: 0;
+
+    color: network-theme.$black-001;
+    //border: 2px solid network-theme.$dk-002;
+    //background-color: yellow;
+
+}
+
+
+.login-form{
+    position: relative;
+    display: block;
+    width: 100%;
+    height: 14rem;
+    margin: 0;
+    padding: 0;
+
+    color: network-theme.$black-001;
+    //border: 2px solid network-theme.$dk-002;
+    //background-color: blue;
+}
+.authentication-form-input{
+    display: inline-block;
+    width: 100%;
+    height: 3rem;
+    padding: 0.5rem;
+    margin-top: 0.5rem;
+}
+
+.register-form-wrapper{
+    position: relative;
+    display: block;
+    width: 100%;
+    height: 23rem;
+
+    margin: 0;
+    padding: 0;
+
+    color: network-theme.$black-001;
+    //border: 2px solid network-theme.$dk-002;
+    //background-color: yellow;
+
+}
+
+.register-form{
+    position: relative;
+    display: block;
+    width: 100%;
+    height: 20rem;
+    margin: 0;
+    padding: 0;
+
+    color: network-theme.$black-001;
+    //border: 2px solid network-theme.$dk-002;
+    //background-color: blue;
+}
+
+.edit-profile-message{
+    position: relative;
+    display: block;
+
+    width: 100%;
+    height: 2.5rem;
+
+    padding: 0.2rem;
+    margin-bottom: 0.5rem;
+
+
+    border-bottom: 2px solid network-theme.$dk-004;
+    background-color: network-theme.$dk-001;
+
+    border: 2px solid black;
+    background-color: lightblue; 
+}
+.edit-profile-header{
+    color: network-theme.$white-001;
+    font-size: 18pt;
+}
+
+.edit-profile-form-wrapper{
+    position: relative;
+    display: block;
+    width: 100%;
+    height: 30rem;
+    padding: 0.5rem;
+    padding-top: 1.5rem;
+
+    border: 2px solid black;
+    border-radius: 1.5rem;
+    background-color: network-theme.$dk-001;
+
+}
+
+.edit-profile-form{
+    position: relative;
+    display: block;
+
+    width: 100%;
+    height: 23rem;
+
+
+    padding: 1rem;
+
+    border: 2px solid network-theme.$dk-004;
+    border-radius: 0.5rem;;
+    background-color:network-theme.$lt-001;
+
+    label{
+        display: inline-block;
+        width: 4.5rem;
+        height: 3rem;
+        padding: 0.5rem;
+        font-family: inherit;
+        font-size: 12pt;
+        text-align: left;
+        color: network-theme.$dk-004;
+        //border: 2px solid black;
+
+        margin: 0;
+    }
+
+    input{
+        display: inline-block;
+    }
+}
+
+
+.edit-profile-input{
+    display: inline-block;
+    width: calc(100% - 5.5rem);
+    height: 3rem;
+    padding: 0.5rem;
+    margin-left: 0.5rem;
+
+    border: 2px solid network-theme.$dk-002;
+    border-radius: 0.5rem;
+}
+#edit-profile-background-img{
+    display: inline-block;
+    position: relative;
+
+    width: 20rem;
+
+    //border: 2px solid black;
+    //background: purple;
+}
+
+#edit-profile-avatar{
+    display: inline-block;
+    position: relative;
+
+    width: 20rem;
+
+    border: 2px solid network-theme.$dk-002;
+    //background: rgb(0, 128, 128);
+}
+#edit_profile_website{
+
+}
+
+
+
+
+
+#edit_profile_mokiker{
+
+}
+
+#edit_profile_caption{
+
+}
+
+
+.submit-btn-wrapper{
+    position: relative;
+    display: flex;
+    justify-content: flex-start;
+
+    width: 100%;
+    margin-top: 0.5rem;
+
+}
+
+
+.form-submit{
+    display: inline-block;
+    left: 8rem;
+
+    width: 5rem;
+    height:2rem;
+    margin-right: 0rem;
+    padding-bottom: 0.3rem;
+    font-size: 14pt;
+
+    border: 2px solid network-theme.$dk-004;
+    border-radius: 0.5rem;
+
+    color: network-theme.$dk-004;
+    background-color: network-theme.$lt-002;
+
+    transition-timing-function: cubic-bezier();
+    transition-property: color, background-color;
+    transition-duration: 250ms;
+
+
+    #new-post-submit{
+        display:block;
+    }
+    #edit-post-submit{
+        display:none
+    }
+}
+.form-submit:hover,
+.form-submit:target,
+.form-submit:focus{
+
+    color: network-theme.$red-002;
+    background-color: network-theme.$white-001;
+}
+
+
+
+
+
+
+////////////////////////////////////////////////////
+/// New Post Panel
+/// ///////////////////////////////////////////////
+.new-post-wrapper{
+    position: absolute;
+    display: none;
+
+    top: 10rem;
+    left: 0;
+
+    width: 95%;
+    //height: 30rem;
+    max-height: 40rem;
+    padding: 1rem;
+    margin:1rem;
+    margin-right: 1rem;
+
+    overflow: auto;
+
+    border: 2px solid rgb(240, 240, 240);
+    border-radius: 1rem;
+    background-color: rgb(170, 0, 156);
+}
+.new-post-wrapper::after{
+    content: 'Create Post';
+    font-family: fonts.$hustle;
+    font-size: 20pt;
+    color: network-theme.$white-001;
+}
+
+.emojis-list-flex{
+    position: relative;
+    display: flex;
+    width: 100%;
+    margin-bottom: 0.5rem;
+
+    //border: 1px solid white;
+
+
+    .emoji{
+        flex-basis: auto;
+        flex-shrink: 1;
+        font-size: 20pt;
+        margin-right: 0.5rem;
+        padding-left: 0.1rem;
+        padding-bottom: 0.1rem;
+        cursor: pointer;
+        //border: 1px solid black;
+
+        border: 2px solid transparent;
+        border-radius: 50%;
+
+        transition-property: border, border-radius;
+        transition-duration: 250ms;
+        transition-timing-function: cubic-bezier();
+    }
+    .emoji:hover,
+    .emoji:focus,
+    .emoji.target{
+        border: 2px solid network-theme.$lt-004;
+        border-radius: 50%;
+    }
+}
+
+.new-post-heading{
+    position: relative;
+    display: block;
+    width: 100%;
+    text-align: left;
+    font-family: fonts.$hustle;
+    font-size: 20pt;
+    color: network-theme.$white-001;
+}
+
+.new-post-form-wrapper{
+    //
+}
+
+.new-post-form{
+    // label
+    // inputs
+    // submit
+    label{
+        display: inline-block;
+        width: 4.5rem;
+        height: 2rem;
+        padding-bottom: 0.2rem;
+        font-family: inherit;
+        font-size: 16pt;
+        text-align: left;
+        border: 2px solid black;
+
+        margin: 0;
+    }
+
+    .post-input{
+        display: inline-block;
+        width: 100%;
+        height: 2.5rem;
+        padding: 0.2rem;
+        padding-left: 0.5rem;
+        margin-bottom: 0.5rem;
+    
+        font-size: 14pt;
+        border: 2px solid network-theme.$dk-002;
+        border-radius: 0.5rem;
+    }
+
+    .post-textarea-input {
+        width: 100%;
+        height: 10rem;
+        padding: 0.5rem;
+        margin-bottom: 0.5rem;
+        border: 2px solid network-theme.$grey-002;
+        border-radius: 4px;
+        background-color: #f8f8f8;
+        font-size: 16px;
+        resize: none;
+      }
+}
+
+.media-uploads-flex{
+    position: relative;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    width: 100%;
+    height: 3.8rem;
+    padding: 0.5rem;
+
+    border: 2px solid network-theme.$lt-004;
+    border-radius: 0.5rem;
+
+    /* styling the choose file button to over-ride the default and replace it with an icon*/
+    /* https://stackoverflow.com/questions/16080644/customize-the-file-button-for-image-upload */
+    .default_choose_img_btn{
+        // Hide the default Choose file button associated with the File INPUT
+        width: 0;
+        height: 0;
+        overflow: hidden;
+        opacity: 0;
+    }
+
+    .choose-media-icon-btn{
+        // Create the button you'd prefer
+        position: relative;
+        display: inline-block;
+        width: 2rem;
+        aspect-ratio: 1/1;
+        margin-right: 1rem;
+        cursor: pointer;
+
+        .upload-icon{
+            width: 100%;
+            object-fit: cover;
+        }
+    }
+    #image-media{
+
+    }
+}
+
+.media-info-flex{
+    position: relative;
+    display: flex;
+    justify-content: flex-end;
+
+    width: 100%;
+
+
+    .media-remove-btn{
+        width: 4.5rem;
+        height:2rem;
+        margin-right: 0.5rem;
+        padding: 0.5;
+        font-size: 12pt;
+    }
+
+    .media-label{
+        width: 50%;
+        height: 2rem;
+        padding: 0.2rem;
+
+        text-align: left;
+        font-size: 12pt;
+
+        border: 2px solid network-theme.$grey-002;
+        border-radius: 4px;
+        background-color: network-theme.$lt-003;
+    }
+}
+
+
+
+
+.form-btn{
+    display: inline-block;
+
+    text-align: center;;
+    width: 5rem;
+    height:2rem;
+    margin-right: 0.5rem;
+    padding-bottom: 0.3rem;
+    font-size: 14pt;
+
+    border: 2px solid network-theme.$dk-004;
+    border-radius: 0.5rem;
+
+    color: network-theme.$dk-004;
+    background-color: network-theme.$lt-002;
+
+    cursor: pointer;
+
+    transition-timing-function: cubic-bezier();
+    transition-property: color, background-color;
+    transition-duration: 250ms;
+}
+.form-btn:hover,
+.form-btn:target,
+.form-btn:focus{
+    color: network-theme.$red-002;
+    background-color: network-theme.$white-001;
+}
+
+
+.image-preview-wrapper{
+    position: relative;
+    display: none;
+    justify-content: center;
+    width: 100%;
+    
+    overflow: hidden;
+    border: 2px solid network-theme.$dk-004;
+    border-radius: 0.5rem;
+    color: network-theme.$dk-004;
+    background-color: network-theme.$lt-002;
+
+    #image-preview{
+        display: none;
+        max-width: 100%;
+        max-height: 10rem;
+
+        object-fit:contain;
+
+    }
+
+}
+

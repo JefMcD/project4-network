@@ -1,0 +1,19 @@
+{% extends "network/authenticate_layout.html" %}
+{% load static %}
+
+{% block title %}
+    Page Not Found 404
+{% endblock %}
+
+{% block authenticate_panel %}
+
+        <div class = "authenticate-login-wrapper">
+            <div class="title-404">404</div>
+            <div class="message-404">{{error_message}}</div>
+            <a href="{% url 'network:entry' %}"> 
+                <div class = "login-btn authenticate-btn" id = 'login-btn'>Return</div>
+            </a>
+        </div>
+
+
+{% endblock %}
